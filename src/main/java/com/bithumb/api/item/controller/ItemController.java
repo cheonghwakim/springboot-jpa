@@ -2,6 +2,9 @@ package com.bithumb.api.item.controller;
 
 import com.bithumb.api.item.domain.Item;
 import com.bithumb.api.item.service.ItemService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-//@Api
+@Api
 @RequiredArgsConstructor
 @RestController
 @CrossOrigin(origins = "*", allowCredentials = "false")
@@ -54,6 +57,9 @@ public class ItemController {
     }
 
     @DeleteMapping
+    @ApiResponses(value = { @ApiResponse(code = 400, message = "Something went wrong"),
+                            @ApiResponse(code = 403, message = "Access Denied"),
+                            @ApiResponse(code = 422, message = "Item is alredy in use") })
     public void deleteAll(){
         itemService.deleteAll();
     }

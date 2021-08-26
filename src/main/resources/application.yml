@@ -7,10 +7,21 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
+
+security:
+  jwt:
+    secret: secret-value
+shop:
+  upload:
+    path: C:\update
+
+UserController:
+  signup: Creates user and returns its JWT token
+  signin: Authenticates user and returns its JWT token
 
 server:
   port: 8080

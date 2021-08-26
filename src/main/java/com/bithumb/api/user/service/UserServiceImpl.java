@@ -2,7 +2,9 @@ package com.bithumb.api.user.service;
 
 import com.bithumb.api.user.domain.User;
 import com.bithumb.api.user.repository.UserRepository;
+import com.bithumb.api.util.Proxy;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,12 +12,14 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends Proxy implements UserService {
 
     private final UserRepository userRepository;
 
     @Override
     public List<User> findAll() {
+
+        int res = intMax.apply(5, 7);
         return userRepository.findAll();
     }
 
