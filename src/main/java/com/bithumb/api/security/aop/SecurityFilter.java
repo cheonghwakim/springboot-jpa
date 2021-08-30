@@ -14,7 +14,7 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
     private final SecurityProvider provider;
 
-    @Override
+    @Override // 필터링 하는 요소는 토큰!
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
     }

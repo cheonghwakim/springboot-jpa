@@ -14,7 +14,10 @@ spring:
 
 security:
   jwt:
-    secret: secret-value
+    token:
+      security-key: secret-key
+      expiration-length: 3600000
+
 shop:
   upload:
     path: C:\update
