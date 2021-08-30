@@ -8,6 +8,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+
 import static org.mockito.Mockito.verify;
 import static org.mockito.BDDMockito.given;
 
@@ -19,17 +22,19 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootConfiguration
 @ExtendWith(MockitoExtension.class)
 class ItemServiceImplTest {
 
+    @Autowired
     private ItemServiceImpl itemService;
 
-    @Mock
-    ItemRepository itemRepository;
+    @Autowired
+    private ItemRepository itemRepository;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.initMocks(this); // init으로 주입
         itemService = new ItemServiceImpl(itemRepository);
     }
 
@@ -41,6 +46,8 @@ class ItemServiceImplTest {
                 .itemColor("C")
                 .build();
         assertThat(item.getItemName(), is(equalTo("B")));
+        itemService.save(item);
+        verify(itemRepository).save(item);
     }
 
     @Test

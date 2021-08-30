@@ -1,5 +1,6 @@
 package com.bithumb.api.security.domain;
 
+import com.bithumb.api.user.domain.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

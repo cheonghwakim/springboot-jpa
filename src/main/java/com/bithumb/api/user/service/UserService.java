@@ -1,6 +1,7 @@
 package com.bithumb.api.user.service;
 
 import com.bithumb.api.user.domain.User;
+import com.bithumb.api.user.domain.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,4 +20,8 @@ public interface UserService {
     long count();
 
     void deleteById(Long id);
+
+    String signup(User user);
+
+    UserDto signin(User user);
 }
